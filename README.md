@@ -7,9 +7,10 @@ Environment Variables
 ---------------------
 
 ```sh
+PROGRAM_NAME
 STATION # http://www.dcc-jpl.com/foltia/wiki/radikomemo
 DURATION_MINUTES
-RADIKO_LOGIN
+RADIKO_LOGIN # Optional. Must be premium member account.
 RADIKO_PASSWORD
 S3_BUCKET
 AWS_ACCESS_KEY_ID
@@ -25,6 +26,11 @@ Run It
 ```sh
 docker pull atsnngs/radiko-recorder-s3
 docker run --env-file=.envrc atsnngs/radiko-recorder-s3
+```
+
+crontab
+```sh
+0 0 * * 2 docker run --rm -e PROGRAM_NAME=example_program_name -e STATION=ALPHA-STATION -e DURATION_MINUTES=60 --env-file /home/kenji/.radikorc kenjitayama/radiko-recorder-s3
 ```
 
 
